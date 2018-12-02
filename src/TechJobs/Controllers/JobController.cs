@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using TechJobs.Data;
 using TechJobs.Models;
 using TechJobs.ViewModels;
@@ -20,9 +21,11 @@ namespace TechJobs.Controllers
         public IActionResult Index(int id)
         {
 
-            Job job = jobData.Find(id);
+            Job jobnew = jobData.Find(id);
 
-         return View(job);
+
+            return View(jobnew);
+
 
         }
 
@@ -41,20 +44,22 @@ namespace TechJobs.Controllers
 
             if (ModelState.IsValid)
             {
-                Employer anEmployer = jobData.Employers.Find(newJobViewModel.EmployerID);
                 Job newJob = new Job
                 {
+                
+
                     Name = newJobViewModel.Name,
-                    Employer = anEmployer,
-                    Location = newJobViewModel.Location,
-                    CoreCompetency = newJobViewModel.CoreCompetency,
-                    PositionType = newJobViewModel.PositionType,
+                    Employer = jobData.Employers.Find(newJobViewModel.EmployerID),
+                    //Location = jobData.Locations.Find(newJobViewModel.LocationID),
+                    //CoreCompetency = jobData.CoreCompetencies.Find(newJobViewModel.CoreCompetencyID),
+                    //PositionType = jobData.PositionTypes.Find(newJobViewModel.PositionTypeID),
+
 
                 };
 
                 jobData.Jobs.Add(newJob);
 
-                return Redirect("/Job");
+                return Redirect(String.Format("/Job?id={0}", newJob.ID));
             }
 
             return View(newJobViewModel);
