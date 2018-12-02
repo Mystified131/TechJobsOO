@@ -54,7 +54,7 @@ namespace TechJobs.Controllers
 
                 jobData.Jobs.Add(newJob);
 
-                return Redirect("/Job");
+                return Redirect("Job/Index");
             }
 
             return View(newJobViewModel);
