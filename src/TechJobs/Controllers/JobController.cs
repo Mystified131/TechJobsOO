@@ -50,9 +50,9 @@ namespace TechJobs.Controllers
 
                     Name = newJobViewModel.Name,
                     Employer = jobData.Employers.Find(newJobViewModel.EmployerID),
-                    //Location = jobData.Locations.Find(newJobViewModel.LocationID),
-                    //CoreCompetency = jobData.CoreCompetencies.Find(newJobViewModel.CoreCompetencyID),
-                    //PositionType = jobData.PositionTypes.Find(newJobViewModel.PositionTypeID),
+                    Location = jobData.Locations.Find(newJobViewModel.LocationID),
+                    CoreCompetency = jobData.CoreCompetencies.Find(newJobViewModel.CoreCompetencyID),
+                    PositionType = jobData.PositionTypes.Find(newJobViewModel.PositionTypeID),
 
 
                 };
